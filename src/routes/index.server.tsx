@@ -24,6 +24,8 @@ export default function Homepage() {
       pageType: ShopifyAnalyticsConstants.pageType.home,
     },
   });
+  // @ts-ignore
+  const MY_STORE_NAME = Oxygen.env.MY_STORE_NAME || "";
 
   return (
     <Layout>
@@ -31,7 +33,7 @@ export default function Homepage() {
         <SeoForHomepage />
       </Suspense>
       <Suspense>
-        {Oxygen.env.MY_STORE_NAME}
+        MY_STORE_NAME = {MY_STORE_NAME}
         <HomepageContent />
       </Suspense>
     </Layout>
@@ -67,7 +69,7 @@ function HomepageContent() {
   return (
     <>
       {primaryHero && (
-          <Hero {...primaryHero} height="full" top loading="eager" />
+        <Hero {...primaryHero} height="full" top loading="eager" />
       )}
       <ProductSwimlane
         data={featuredProducts.nodes}
